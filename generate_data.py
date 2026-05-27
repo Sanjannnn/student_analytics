@@ -1,10 +1,3 @@
-"""
-generate_data.py
-Run this file if you don't have the Kaggle CSV.
-It creates 2000 realistic fake student records.
-
-Usage:  python generate_data.py
-"""
 
 import pandas as pd
 import numpy as np
