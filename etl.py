@@ -17,9 +17,7 @@ from config import CONNECTION_STRING
 DATA_FILE = "data/student_performance.csv"
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-#  1. CONNECT TO AZURE SQL DATABASE
-# ─────────────────────────────────────────────────────────────────────────────
+# Connecting to Azure
 
 def connect_db():
     print("Connecting to Azure SQL Database...")
@@ -28,9 +26,7 @@ def connect_db():
     return conn
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-#  2. CREATE TABLES  (matches the star schema from Part 1)
-# ─────────────────────────────────────────────────────────────────────────────
+# Creating Tables
 
 def create_tables(conn):
     cursor = conn.cursor()
@@ -115,9 +111,7 @@ def create_tables(conn):
     print("All tables created (or already existed).")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-#  3. EXTRACT  —  read the CSV file
-# ─────────────────────────────────────────────────────────────────────────────
+# Read the CSV
 
 def extract_data(csv_file=DATA_FILE):
     if not os.path.exists(csv_file):
@@ -130,9 +124,7 @@ def extract_data(csv_file=DATA_FILE):
     return df
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-#  4. TRANSFORM  —  clean and reshape the data
-# ─────────────────────────────────────────────────────────────────────────────
+# Transform Data
 
 def transform_data(df):
     print("Transforming data...")
@@ -221,9 +213,7 @@ def transform_data(df):
     return df
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-#  5. DIMENSION HELPERS  —  look up existing row or insert a new one
-# ─────────────────────────────────────────────────────────────────────────────
+# Dimension Helper
 
 def get_or_create_lifestyle(cursor, row):
     cursor.execute("""
@@ -304,9 +294,7 @@ def get_or_create_date(cursor, row):
     return cursor.fetchone()[0]
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-#  6. LOAD  —  insert everything into the Azure data warehouse
-# ─────────────────────────────────────────────────────────────────────────────
+# Loading the Data
 
 def load_data(conn, df):
     print("Loading data into Azure SQL Database...")
@@ -363,9 +351,7 @@ def load_data(conn, df):
     print(f"Load complete! {len(df)} student records are now in Azure SQL Database.")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-#  7. ORCHESTRATE  —  run the full pipeline
-# ─────────────────────────────────────────────────────────────────────────────
+# Run ETL pipeline
 
 def run_etl():
     print("=" * 55)
