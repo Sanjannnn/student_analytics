@@ -10,7 +10,7 @@ A centralised data warehouse and interactive analytics dashboard built for UTS 4
 
 | Component | Technology |
 |---|---|
-| Data source | Kaggle student performance CSV (2,000 rows) |
+| Data source | Kaggle student performance CSV (6607 rows) |
 | ETL pipeline | Python + pandas + pyodbc |
 | Cloud data warehouse | Azure SQL Database (Australia East) |
 | Dashboard | Streamlit + Plotly Express |
