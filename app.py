@@ -1,10 +1,3 @@
-"""
-app.py  —  Student Performance Analytics Dashboard
-Streamlit web app with 6 functional requirement pages + home.
-
-Usage:  streamlit run app.py
-"""
-
 import streamlit as st
 import pymssql
 import pandas as pd
@@ -14,10 +7,6 @@ from config import SERVER, DATABASE, USERNAME, PASSWORD
 
 st.set_page_config(page_title="Student Performance Analytics", layout="wide")
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-#  DATABASE HELPER
-# ─────────────────────────────────────────────────────────────────────────────
 
 def run_query(query, params=None):
     """Run a SQL query and return results as a pandas DataFrame."""
@@ -33,10 +22,6 @@ def run_query(query, params=None):
     return pd.DataFrame.from_records(rows, columns=columns)
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-#  SIDEBAR NAVIGATION
-# ─────────────────────────────────────────────────────────────────────────────
-
 st.sidebar.title("Student Analytics")
 st.sidebar.markdown("---")
 
@@ -51,10 +36,6 @@ page = st.sidebar.radio("Navigate to", [
     "FR 2.2.06 — Segmented Results",
 ])
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-#  HOME DASHBOARD
-# ─────────────────────────────────────────────────────────────────────────────
 
 if page == "Home Dashboard":
     st.title("Student Performance Analytics")
@@ -91,10 +72,6 @@ if page == "Home Dashboard":
                        labels={"Exam_Score": "Exam Score"})
     st.plotly_chart(fig, use_container_width=True)
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-#  AT-RISK STUDENTS
-# ─────────────────────────────────────────────────────────────────────────────
 
 elif page == "At-Risk Students":
     st.title("At-Risk Student Identifier")
@@ -231,10 +208,7 @@ elif page == "At-Risk Students":
         use_container_width=True
     )
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-#  FR 2.2.01  —  STUDENT RECORDS
-# ─────────────────────────────────────────────────────────────────────────────
+#  FR 2.2.01  —  Student records
 
 elif page == "FR 2.2.01 — Student Records":
     st.title("FR 2.2.01 — Student Records")
@@ -268,9 +242,7 @@ elif page == "FR 2.2.01 — Student Records":
         st.caption(f"Showing first 200 of all students")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-#  FR 2.2.02  —  ASSESSMENT RESULTS
-# ─────────────────────────────────────────────────────────────────────────────
+#  FR 2.2.02  —  Assesment results
 
 elif page == "FR 2.2.02 — Assessment Results":
     st.title("FR 2.2.02 — Assessment Results")
@@ -305,9 +277,7 @@ elif page == "FR 2.2.02 — Assessment Results":
     st.plotly_chart(fig3, use_container_width=True)
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-#  FR 2.2.03  —  TRACK STUDENT CHANGES
-# ─────────────────────────────────────────────────────────────────────────────
+#  FR 2.2.03  —  Track student changes
 
 elif page == "FR 2.2.03 — Track Student Changes":
     st.title("FR 2.2.03 — Track Student Performance Changes")
@@ -343,10 +313,7 @@ elif page == "FR 2.2.03 — Track Student Changes":
     st.dataframe(df.head(20)[["Student_ID", "Previous_Score", "Exam_Score", "Score_Change", "Status"]],
                  use_container_width=True)
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-#  FR 2.2.04  —  RESEARCH QUERY TOOL
-# ─────────────────────────────────────────────────────────────────────────────
+#  FR 2.2.04  —  Research Query Tool
 
 elif page == "FR 2.2.04 — Research Query Tool":
     st.title("FR 2.2.04 — Research Query Tool")
@@ -406,9 +373,7 @@ elif page == "FR 2.2.04 — Research Query Tool":
         st.info("Please select at least one option in each filter.")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-#  FR 2.2.05  —  PERFORMANCE OVER TIME
-# ─────────────────────────────────────────────────────────────────────────────
+#  FR 2.2.05  —  Performance over Time
 
 elif page == "FR 2.2.05 — Performance Over Time":
     st.title("FR 2.2.05 — Performance Over Time")
@@ -453,9 +418,7 @@ elif page == "FR 2.2.05 — Performance Over Time":
     st.plotly_chart(fig3, use_container_width=True)
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-#  FR 2.2.06  —  SEGMENTED RESULTS
-# ─────────────────────────────────────────────────────────────────────────────
+#  FR 2.2.06  —  Segmented Results
 
 elif page == "FR 2.2.06 — Segmented Results":
     st.title("FR 2.2.06 — Segmented Results")
