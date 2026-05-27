@@ -2,7 +2,7 @@
 
 A centralised data warehouse and interactive analytics dashboard built for UTS 41091 Data Systems — Assignment 2.
 
-**Live dashboard:** https://student-analytics-sanjan.streamlit.app
+**Live dashboard:** https://student-analytics-group12.streamlit.app/
 
 ---
 
@@ -114,3 +114,5 @@ student_analytics/
 
 - Sanjan Neupane
 - Shervin Sabu
+- Rudra Labh
+- Christopher Valenzuela
