@@ -1,10 +1,3 @@
-# ─────────────────────────────────────────────────────────────────────────────
-#  Azure SQL connection details.
-#  When running on Streamlit Cloud, values come from st.secrets.
-#  When running locally, values come from .streamlit/secrets.toml (if present)
-#  or the hardcoded fallbacks below.
-# ─────────────────────────────────────────────────────────────────────────────
-
 try:
     import streamlit as st
     SERVER   = st.secrets["azure"]["SERVER"]
